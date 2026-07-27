@@ -1,148 +1,181 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    }
+// ==========================
+// STUDENT SURVEY QUESTIONS
+// ==========================
 
-    body{
+const questions = [
+{
+    question: "What is your age?",
+        answers: ["Under 18", "18–24", "25–34", "35+"]
+        },
+        {
+            question: "What is your gender?",
+                answers: ["Male", "Female", "Prefer not to say"]
+                },
+                {
+                    question: "Which year are you in?",
+                        answers: ["Year 1", "Year 2", "Year 3", "Year 4"]
+                        },
+                        {
+                            question: "How satisfied are you with your lecturers?",
+                                answers: [
+                                        "Very Satisfied",
+                                                "Satisfied",
+                                                        "Neutral",
+                                                                "Dissatisfied"
+                                                                    ]
+                                                                    },
+                                                                    {
+                                                                        question: "Would you recommend this university?",
+                                                                            answers: ["Yes", "No"]
+                                                                            }
+                                                                            ];
 
-    font-family:Arial,Helvetica,sans-serif;
+                                                                            // ==========================
 
-    background:url("background1.jpg");
+                                                                            let currentQuestion = 0;
+                                                                            let selectedAnswers = [];
 
-    background-size:cover;
+                                                                            // ==========================
 
-    background-position:center;
+                                                                            const question = document.getElementById("question");
+                                                                            const answers = document.getElementById("answers");
+                                                                            const progressBar = document.getElementById("progressBar");
+                                                                            const questionCounter = document.getElementById("questionCounter");
+                                                                            const nextBtn = document.getElementById("nextBtn");
+                                                                            const prevBtn = document.getElementById("prevBtn");
 
-    height:100vh;
+                                                                            // Only run on survey page
+                                                                            if(question){
 
-    overflow:hidden;
+                                                                            loadQuestion();
 
-    animation:zoomBackground 20s infinite alternate;
+                                                                            prevBtn.addEventListener("click", previousQuestion);
+                                                                            nextBtn.addEventListener("click", nextQuestion);
 
-    }
+                                                                            }
 
-    .overlay{
+                                                                            // ==========================
 
-    width:100%;
+                                                                            function loadQuestion(){
 
-    height:100vh;
+                                                                            const current = questions[currentQuestion];
 
-    background:rgba(0,0,0,.55);
+                                                                            question.textContent = current.question;
 
-    display:flex;
+                                                                            questionCounter.textContent =
+                                                                            `Question ${currentQuestion+1} of ${questions.length}`;
 
-    justify-content:center;
+                                                                            progressBar.style.width =
+                                                                            `${((currentQuestion+1)/questions.length)*100}%`;
 
-    align-items:center;
+                                                                            answers.innerHTML = "";
 
-    }
+                                                                            current.answers.forEach((answer,index)=>{
 
-    .hero{
+                                                                            const card = document.createElement("div");
 
-    width:90%;
+                                                                            card.className="answer-card";
 
-    max-width:700px;
+                                                                            card.textContent=answer;
 
-    padding:45px;
+                                                                            if(selectedAnswers[currentQuestion]===index){
 
-    background:rgba(255,255,255,.15);
+                                                                            card.classList.add("selected");
 
-    backdrop-filter:blur(15px);
+                                                                            }
 
-    border-radius:25px;
+                                                                            card.addEventListener("click",()=>{
 
-    text-align:center;
+                                                                            document.querySelectorAll(".answer-card").forEach(c=>{
 
-    color:white;
+                                                                            c.classList.remove("selected");
 
-    box-shadow:0 10px 40px rgba(0,0,0,.4);
+                                                                            });
 
-    animation:fadeUp 1.5s;
+                                                                            card.classList.add("selected");
 
-    }
+                                                                            selectedAnswers[currentQuestion]=index;
 
-    .hero h1{
+                                                                            });
 
-    font-size:3rem;
+                                                                            answers.appendChild(card);
 
-    margin-bottom:20px;
+                                                                            });
 
-    }
+                                                                            prevBtn.style.visibility =
+                                                                            currentQuestion===0 ? "hidden":"visible";
 
-    .hero p{
+                                                                            nextBtn.textContent =
+                                                                            currentQuestion===questions.length-1
+                                                                            ? "Submit"
+                                                                            : "Next";
 
-    font-size:1.2rem;
+                                                                            }
 
-    line-height:1.8;
+                                                                            // ==========================
 
-    margin-bottom:35px;
+                                                                            function nextQuestion(){
 
-    }
+                                                                            if(selectedAnswers[currentQuestion]===undefined){
 
-    button{
+                                                                            alert("Please select an answer before continuing.");
 
-    background:#2563eb;
+                                                                            return;
 
-    color:white;
+                                                                            }
 
-    padding:18px 40px;
+                                                                            if(currentQuestion<questions.length-1){
 
-    border:none;
+                                                                            currentQuestion++;
 
-    border-radius:50px;
+                                                                            loadQuestion();
 
-    font-size:18px;
+                                                                            }else{
 
-    cursor:pointer;
+                                                                            showThankYou();
 
-    transition:.4s;
+                                                                            }
 
-    }
+                                                                            }
 
-    button:hover{
+                                                                            // ==========================
 
-    transform:translateY(-6px) scale(1.05);
+                                                                            function previousQuestion(){
 
-    background:#1d4ed8;
+                                                                            if(currentQuestion>0){
 
-    box-shadow:0 10px 25px rgba(37,99,235,.5);
+                                                                            currentQuestion--;
 
-    }
+                                                                            loadQuestion();
 
-    @keyframes fadeUp{
+                                                                            }
 
-    from{
+                                                                            }
 
-    opacity:0;
+                                                                            // ==========================
 
-    transform:translateY(80px);
+                                                                            function showThankYou(){
 
-    }
+                                                                            const card=document.querySelector(".survey-card");
 
-    to{
+                                                                            card.innerHTML=`
 
-    opacity:1;
+                                                                            <div class="thank-you">
 
-    transform:translateY(0);
+                                                                            <h1>✔ Thank You!</h1>
 
-    }
+                                                                            <p>
 
-    }
+                                                                            Your response has been submitted successfully.
 
-    @keyframes zoomBackground{
+                                                                            <br><br>
 
-    from{
+                                                                            We appreciate your participation.
 
-    transform:scale(1);
+                                                                            </p>
 
-    }
+                                                                            </div>
 
-    to{
+                                                                            `;
 
-    transform:scale(1.1);
-
-    }
-
-    }
-}
+                                                                            }
