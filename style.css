@@ -1,131 +1,375 @@
-/* RESET */
+/* ==========================
+   RESET
+   ========================== */
 
-*{
-    margin:0;
-        padding:0;
-            box-sizing:border-box;
-            }
+   * {
+       margin: 0;
+           padding: 0;
+               box-sizing: border-box;
+               }
 
-            body{
-                font-family:'Poppins',sans-serif;
-                }
+               body {
+                   font-family: 'Poppins', sans-serif;
+                   }
 
-                /* LANDING PAGE */
+                   /* ==========================
+                      SHARED BACKGROUND
+                      ========================== */
 
-                body.landing{
-                    height:100vh;
-                        background:url("images/background1.jpg") center center/cover no-repeat;
-                            display:flex;
-                                justify-content:center;
-                                    align-items:center;
-                                        overflow:hidden;
-                                            position:relative;
-                                                animation:zoomBackground 20s ease-in-out infinite alternate;
-                                                }
+                      body.landing,
+                      body.survey-page {
+                          min-height: 100vh;
+                              display: flex;
+                                  justify-content: center;
+                                      align-items: center;
+                                          position: relative;
+                                              overflow: hidden;
+                                                  animation: zoomBackground 20s ease-in-out infinite alternate;
+                                                  }
 
-                                                /* DARK OVERLAY */
+                                                  body.landing {
+                                                      background: url("images/background1.jpg") center center/cover no-repeat;
+                                                      }
 
-                                                .overlay{
-                                                    position:absolute;
-                                                        inset:0;
-                                                            background:rgba(0,0,0,0.55);
-                                                            }
+                                                      body.survey-page {
+                                                          background: url("images/background2.jpg") center center/cover no-repeat;
+                                                          }
 
-                                                            /* GLASS CARD */
+                                                          /* ==========================
+                                                             OVERLAY
+                                                             ========================== */
 
-                                                            .welcome-card{
-                                                                position:relative;
-                                                                    z-index:2;
+                                                             .overlay {
+                                                                 position: absolute;
+                                                                     inset: 0;
+                                                                         background: rgba(0,0,0,0.55);
+                                                                         }
 
-                                                                        width:90%;
-                                                                            max-width:520px;
+                                                                         /* ==========================
+                                                                            GLASS CARD
+                                                                            ========================== */
 
-                                                                                padding:50px 40px;
+                                                                            .welcome-card,
+                                                                            .survey-card {
 
-                                                                                    text-align:center;
+                                                                                position: relative;
+                                                                                    z-index: 2;
 
-                                                                                        background:rgba(255,255,255,.12);
-                                                                                            backdrop-filter:blur(15px);
-                                                                                                -webkit-backdrop-filter:blur(15px);
+                                                                                        width: 90%;
+                                                                                            max-width: 700px;
 
-                                                                                                    border:1px solid rgba(255,255,255,.18);
+                                                                                                padding: 40px;
 
-                                                                                                        border-radius:25px;
+                                                                                                    border-radius: 25px;
 
-                                                                                                            box-shadow:0 8px 32px rgba(0,0,0,.35);
+                                                                                                        background: rgba(255,255,255,0.12);
 
-                                                                                                                animation:fadeUp 1.2s ease;
-                                                                                                                }
+                                                                                                            backdrop-filter: blur(15px);
+                                                                                                                -webkit-backdrop-filter: blur(15px);
 
-                                                                                                                /* TITLE */
+                                                                                                                    border: 1px solid rgba(255,255,255,0.2);
 
-                                                                                                                .welcome-card h1{
+                                                                                                                        box-shadow: 0 10px 35px rgba(0,0,0,.35);
 
-                                                                                                                    color:white;
+                                                                                                                            animation: fadeUp .9s ease;
+                                                                                                                            }
 
-                                                                                                                        font-size:3rem;
+                                                                                                                            /* ==========================
+                                                                                                                               LANDING PAGE
+                                                                                                                               ========================== */
 
-                                                                                                                            margin-bottom:20px;
+                                                                                                                               .welcome-card {
+                                                                                                                                   text-align: center;
+                                                                                                                                   }
 
-                                                                                                                                font-weight:700;
-                                                                                                                                }
+                                                                                                                                   .welcome-card h1 {
 
-                                                                                                                                /* DESCRIPTION */
+                                                                                                                                       color: white;
 
-                                                                                                                                .welcome-card p{
+                                                                                                                                           font-size: 3rem;
 
-                                                                                                                                    color:#ececec;
+                                                                                                                                               margin-bottom: 20px;
+                                                                                                                                               }
 
-                                                                                                                                        line-height:1.8;
+                                                                                                                                               .welcome-card p {
 
-                                                                                                                                            font-size:1.05rem;
+                                                                                                                                                   color: #eeeeee;
 
-                                                                                                                                                margin-bottom:35px;
-                                                                                                                                                }
+                                                                                                                                                       line-height: 1.8;
 
-                                                                                                                                                /* BUTTON */
+                                                                                                                                                           margin-bottom: 35px;
 
-                                                                                                                                                .start-btn{
+                                                                                                                                                               font-size: 1.05rem;
+                                                                                                                                                               }
 
-                                                                                                                                                    display:inline-block;
+                                                                                                                                                               .start-btn {
 
-                                                                                                                                                        padding:15px 38px;
+                                                                                                                                                                   display: inline-block;
 
-                                                                                                                                                            border-radius:50px;
+                                                                                                                                                                       padding: 15px 40px;
 
-                                                                                                                                                                text-decoration:none;
+                                                                                                                                                                           background: #2563eb;
 
-                                                                                                                                                                    color:white;
+                                                                                                                                                                               color: white;
 
-                                                                                                                                                                        background:#2563eb;
+                                                                                                                                                                                   text-decoration: none;
 
-                                                                                                                                                                            font-weight:600;
+                                                                                                                                                                                       border-radius: 50px;
 
-                                                                                                                                                                                transition:.35s;
-                                                                                                                                                                                }
+                                                                                                                                                                                           font-weight: 600;
 
-                                                                                                                                                                                .start-btn:hover{
+                                                                                                                                                                                               transition: .3s;
+                                                                                                                                                                                               }
 
-                                                                                                                                                                                    background:#1d4ed8;
+                                                                                                                                                                                               .start-btn:hover {
 
-                                                                                                                                                                                        transform:translateY(-4px);
+                                                                                                                                                                                                   transform: translateY(-3px);
 
-                                                                                                                                                                                            box-shadow:0 12px 25px rgba(37,99,235,.4);
-                                                                                                                                                                                            }
+                                                                                                                                                                                                       background: #1d4ed8;
 
-                                                                                                                                                                                            .start-btn:active{
+                                                                                                                                                                                                           box-shadow: 0 12px 25px rgba(37,99,235,.4);
+                                                                                                                                                                                                           }
 
-                                                                                                                                                                                                transform:scale(.96);
-                                                                                                                                                                                                }
+                                                                                                                                                                                                           /* ==========================
+                                                                                                                                                                                                              PROGRESS BAR
+                                                                                                                                                                                                              ========================== */
 
-                                                                                                                                                                                                /* ANIMATIONS */
+                                                                                                                                                                                                              .progress-container {
 
-                                                                                                                                                                                                @keyframes fadeUp{
+                                                                                                                                                                                                                  width: 100%;
 
-                                                                                                                                                                                                    from{
-                                                                                                                                                                                                            opacity:0;
-                                                                                                                                                                                                                    transform:translateY(40px);
-                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                      height: 10px;
 
-                                                                                                                                                                                                                            to{
-                                                                                                                                                                                                                                    opacity:1;
+                                                                                                                                                                                                                          background: rgba(255,255,255,.2);
+
+                                                                                                                                                                                                                              border-radius: 50px;
+
+                                                                                                                                                                                                                                  margin-bottom: 25px;
+                                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                                  .progress-bar {
+
+                                                                                                                                                                                                                                      width: 20%;
+
+                                                                                                                                                                                                                                          height: 100%;
+
+                                                                                                                                                                                                                                              background: #2563eb;
+
+                                                                                                                                                                                                                                                  border-radius: 50px;
+
+                                                                                                                                                                                                                                                      transition: .4s;
+                                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                                      /* ==========================
+                                                                                                                                                                                                                                                         QUESTION
+                                                                                                                                                                                                                                                         ========================== */
+
+                                                                                                                                                                                                                                                         .question-counter {
+
+                                                                                                                                                                                                                                                             color: white;
+
+                                                                                                                                                                                                                                                                 margin-bottom: 15px;
+                                                                                                                                                                                                                                                                 }
+
+                                                                                                                                                                                                                                                                 #question {
+
+                                                                                                                                                                                                                                                                     color: white;
+
+                                                                                                                                                                                                                                                                         font-size: 1.8rem;
+
+                                                                                                                                                                                                                                                                             margin-bottom: 30px;
+                                                                                                                                                                                                                                                                             }
+
+                                                                                                                                                                                                                                                                             /* ==========================
+                                                                                                                                                                                                                                                                                ANSWERS
+                                                                                                                                                                                                                                                                                ========================== */
+
+                                                                                                                                                                                                                                                                                .answers {
+
+                                                                                                                                                                                                                                                                                    display: grid;
+
+                                                                                                                                                                                                                                                                                        gap: 15px;
+
+                                                                                                                                                                                                                                                                                            margin-bottom: 30px;
+                                                                                                                                                                                                                                                                                            }
+
+                                                                                                                                                                                                                                                                                            .answer-card {
+
+                                                                                                                                                                                                                                                                                                padding: 18px;
+
+                                                                                                                                                                                                                                                                                                    border-radius: 15px;
+
+                                                                                                                                                                                                                                                                                                        background: rgba(255,255,255,.12);
+
+                                                                                                                                                                                                                                                                                                            border: 1px solid rgba(255,255,255,.15);
+
+                                                                                                                                                                                                                                                                                                                color: white;
+
+                                                                                                                                                                                                                                                                                                                    cursor: pointer;
+
+                                                                                                                                                                                                                                                                                                                        transition: .3s;
+                                                                                                                                                                                                                                                                                                                        }
+
+                                                                                                                                                                                                                                                                                                                        .answer-card:hover {
+
+                                                                                                                                                                                                                                                                                                                            background: rgba(37,99,235,.35);
+
+                                                                                                                                                                                                                                                                                                                                transform: translateY(-3px);
+                                                                                                                                                                                                                                                                                                                                }
+
+                                                                                                                                                                                                                                                                                                                                .answer-card.selected {
+
+                                                                                                                                                                                                                                                                                                                                    background: #2563eb;
+
+                                                                                                                                                                                                                                                                                                                                        border-color: #2563eb;
+                                                                                                                                                                                                                                                                                                                                        }
+
+                                                                                                                                                                                                                                                                                                                                        /* ==========================
+                                                                                                                                                                                                                                                                                                                                           BUTTONS
+                                                                                                                                                                                                                                                                                                                                           ========================== */
+
+                                                                                                                                                                                                                                                                                                                                           .buttons {
+
+                                                                                                                                                                                                                                                                                                                                               display: flex;
+
+                                                                                                                                                                                                                                                                                                                                                   justify-content: space-between;
+
+                                                                                                                                                                                                                                                                                                                                                       gap: 15px;
+                                                                                                                                                                                                                                                                                                                                                       }
+
+                                                                                                                                                                                                                                                                                                                                                       .buttons button {
+
+                                                                                                                                                                                                                                                                                                                                                           flex: 1;
+
+                                                                                                                                                                                                                                                                                                                                                               padding: 15px;
+
+                                                                                                                                                                                                                                                                                                                                                                   border: none;
+
+                                                                                                                                                                                                                                                                                                                                                                       border-radius: 50px;
+
+                                                                                                                                                                                                                                                                                                                                                                           background: #2563eb;
+
+                                                                                                                                                                                                                                                                                                                                                                               color: white;
+
+                                                                                                                                                                                                                                                                                                                                                                                   cursor: pointer;
+
+                                                                                                                                                                                                                                                                                                                                                                                       font-size: 16px;
+
+                                                                                                                                                                                                                                                                                                                                                                                           font-weight: 600;
+
+                                                                                                                                                                                                                                                                                                                                                                                               transition: .3s;
+                                                                                                                                                                                                                                                                                                                                                                                               }
+
+                                                                                                                                                                                                                                                                                                                                                                                               .buttons button:hover {
+
+                                                                                                                                                                                                                                                                                                                                                                                                   background: #1d4ed8;
+
+                                                                                                                                                                                                                                                                                                                                                                                                       transform: translateY(-2px);
+                                                                                                                                                                                                                                                                                                                                                                                                       }
+
+                                                                                                                                                                                                                                                                                                                                                                                                       .buttons button:active {
+
+                                                                                                                                                                                                                                                                                                                                                                                                           transform: scale(.97);
+                                                                                                                                                                                                                                                                                                                                                                                                           }
+
+                                                                                                                                                                                                                                                                                                                                                                                                           /* ==========================
+                                                                                                                                                                                                                                                                                                                                                                                                              THANK YOU
+                                                                                                                                                                                                                                                                                                                                                                                                              ========================== */
+
+                                                                                                                                                                                                                                                                                                                                                                                                              .thank-you {
+
+                                                                                                                                                                                                                                                                                                                                                                                                                  text-align: center;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                      padding: 40px 20px;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                          animation: fadeUp .8s ease;
+                                                                                                                                                                                                                                                                                                                                                                                                                          }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                          .thank-you h1 {
+
+                                                                                                                                                                                                                                                                                                                                                                                                                              color: white;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                  font-size: 2.8rem;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                      margin-bottom: 20px;
+                                                                                                                                                                                                                                                                                                                                                                                                                                      }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                      .thank-you p {
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                          color: #f3f3f3;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                              line-height: 1.8;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                  font-size: 1.1rem;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                  }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                  /* ==========================
+                                                                                                                                                                                                                                                                                                                                                                                                                                                     ANIMATIONS
+                                                                                                                                                                                                                                                                                                                                                                                                                                                     ========================== */
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                     @keyframes fadeUp {
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                         from {
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                 opacity: 0;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                         transform: translateY(30px);
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                             }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 to {
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         opacity: 1;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 transform: translateY(0);
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     @keyframes zoomBackground {
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         from {
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 transform: scale(1);
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         to {
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 transform: scale(1.08);
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     /* ==========================
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        MOBILE
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ========================== */
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        @media (max-width:768px){
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        .welcome-card,
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        .survey-card{
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        padding:30px 20px;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        .welcome-card h1{
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        font-size:2.2rem;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        #question{
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        font-size:1.4rem;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        .buttons{
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        flex-direction:column;
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
