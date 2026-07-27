@@ -2,57 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Survey Questions</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Student Survey</title>
 
-<div class="container">
+                <link rel="stylesheet" href="style.css">
 
-<h1>Student Survey</h1>
+                    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+                    </head>
+                    <body class="survey-page">
 
-<p><strong>Question 1 of 5</strong></p>
+                        <div class="overlay"></div>
 
-<h3>What is your age?</h3>
+                            <div class="survey-card">
 
-<form>
+                                    <div class="progress-container">
+                                                <div class="progress-bar" id="progressBar"></div>
+                                                        </div>
 
-<label>
-<input type="radio" name="age">
-Under 18
-</label>
+                                                                <div class="question-counter" id="questionCounter">
+                                                                            Question 1 of 5
+                                                                                    </div>
 
-<br><br>
+                                                                                            <h2 id="question">
+                                                                                                        Question goes here
+                                                                                                                </h2>
 
-<label>
-<input type="radio" name="age">
-18 - 24
-</label>
+                                                                                                                        <div id="answers" class="answers">
+                                                                                                                                    <!-- JavaScript will insert answer cards here -->
+                                                                                                                                            </div>
 
-<br><br>
+                                                                                                                                                    <div class="buttons">
 
-<label>
-<input type="radio" name="age">
-25 - 34
-</label>
+                                                                                                                                                                <button id="prevBtn">
+                                                                                                                                                                                Previous
+                                                                                                                                                                                            </button>
 
-<br><br>
+                                                                                                                                                                                                        <button id="nextBtn">
+                                                                                                                                                                                                                        Next
+                                                                                                                                                                                                                                    </button>
 
-<label>
-<input type="radio" name="age">
-35+
-</label>
+                                                                                                                                                                                                                                            </div>
 
-<br><br>
+                                                                                                                                                                                                                                                </div>
 
-<button type="button">
-Next
-</button>
+                                                                                                                                                                                                                                                    <script src="script.js"></script>
 
-</form>
-
-</div>
-
-</body>
-</html>
+                                                                                                                                                                                                                                                    </body>
+                                                                                                                                                                                                                                                    </html>
