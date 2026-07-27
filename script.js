@@ -1,181 +1,182 @@
-// ==========================
-// STUDENT SURVEY QUESTIONS
-// ==========================
+// ===========================
+// STUDENT SURVEY APP
+// ===========================
 
+// Survey Questions
 const questions = [
-{
-    question: "What is your age?",
-        answers: ["Under 18", "18–24", "25–34", "35+"]
-        },
-        {
-            question: "What is your gender?",
-                answers: ["Male", "Female", "Prefer not to say"]
-                },
-                {
-                    question: "Which year are you in?",
-                        answers: ["Year 1", "Year 2", "Year 3", "Year 4"]
+    {
+            question: "What is your age?",
+                    answers: ["Under 18", "18–24", "25–34", "35+"]
                         },
-                        {
-                            question: "How satisfied are you with your lecturers?",
-                                answers: [
-                                        "Very Satisfied",
-                                                "Satisfied",
-                                                        "Neutral",
-                                                                "Dissatisfied"
-                                                                    ]
-                                                                    },
-                                                                    {
-                                                                        question: "Would you recommend this university?",
-                                                                            answers: ["Yes", "No"]
-                                                                            }
-                                                                            ];
+                            {
+                                    question: "What is your gender?",
+                                            answers: ["Male", "Female", "Prefer not to say"]
+                                                },
+                                                    {
+                                                            question: "Which year are you in?",
+                                                                    answers: ["Year 1", "Year 2", "Year 3", "Year 4"]
+                                                                        },
+                                                                            {
+                                                                                    question: "How satisfied are you with your lecturers?",
+                                                                                            answers: [
+                                                                                                        "Very Satisfied",
+                                                                                                                    "Satisfied",
+                                                                                                                                "Neutral",
+                                                                                                                                            "Dissatisfied"
+                                                                                                                                                    ]
+                                                                                                                                                        },
+                                                                                                                                                            {
+                                                                                                                                                                    question: "Would you recommend this university?",
+                                                                                                                                                                            answers: ["Yes", "No"]
+                                                                                                                                                                                }
+                                                                                                                                                                                ];
 
-                                                                            // ==========================
+                                                                                                                                                                                // Variables
+                                                                                                                                                                                let currentQuestion = 0;
+                                                                                                                                                                                let userAnswers = [];
 
-                                                                            let currentQuestion = 0;
-                                                                            let selectedAnswers = [];
+                                                                                                                                                                                // Get HTML Elements
+                                                                                                                                                                                const questionElement = document.getElementById("question");
+                                                                                                                                                                                const answersElement = document.getElementById("answers");
+                                                                                                                                                                                const progressBar = document.getElementById("progressBar");
+                                                                                                                                                                                const questionCounter = document.getElementById("questionCounter");
+                                                                                                                                                                                const nextButton = document.getElementById("nextBtn");
+                                                                                                                                                                                const previousButton = document.getElementById("prevBtn");
 
-                                                                            // ==========================
+                                                                                                                                                                                // Only run on survey page
+                                                                                                                                                                                if (questionElement) {
 
-                                                                            const question = document.getElementById("question");
-                                                                            const answers = document.getElementById("answers");
-                                                                            const progressBar = document.getElementById("progressBar");
-                                                                            const questionCounter = document.getElementById("questionCounter");
-                                                                            const nextBtn = document.getElementById("nextBtn");
-                                                                            const prevBtn = document.getElementById("prevBtn");
+                                                                                                                                                                                    loadQuestion();
 
-                                                                            // Only run on survey page
-                                                                            if(question){
+                                                                                                                                                                                        nextButton.addEventListener("click", nextQuestion);
+                                                                                                                                                                                            previousButton.addEventListener("click", previousQuestion);
 
-                                                                            loadQuestion();
+                                                                                                                                                                                            }
 
-                                                                            prevBtn.addEventListener("click", previousQuestion);
-                                                                            nextBtn.addEventListener("click", nextQuestion);
+                                                                                                                                                                                            // ===========================
+                                                                                                                                                                                            // Load Question
+                                                                                                                                                                                            // ===========================
 
-                                                                            }
+                                                                                                                                                                                            function loadQuestion() {
 
-                                                                            // ==========================
+                                                                                                                                                                                                const current = questions[currentQuestion];
 
-                                                                            function loadQuestion(){
+                                                                                                                                                                                                    questionElement.textContent = current.question;
 
-                                                                            const current = questions[currentQuestion];
+                                                                                                                                                                                                        questionCounter.textContent =
+                                                                                                                                                                                                                `Question ${currentQuestion + 1} of ${questions.length}`;
 
-                                                                            question.textContent = current.question;
+                                                                                                                                                                                                                    progressBar.style.width =
+                                                                                                                                                                                                                            `${((currentQuestion + 1) / questions.length) * 100}%`;
 
-                                                                            questionCounter.textContent =
-                                                                            `Question ${currentQuestion+1} of ${questions.length}`;
+                                                                                                                                                                                                                                answersElement.innerHTML = "";
 
-                                                                            progressBar.style.width =
-                                                                            `${((currentQuestion+1)/questions.length)*100}%`;
+                                                                                                                                                                                                                                    current.answers.forEach((answer, index) => {
 
-                                                                            answers.innerHTML = "";
+                                                                                                                                                                                                                                            const card = document.createElement("div");
 
-                                                                            current.answers.forEach((answer,index)=>{
+                                                                                                                                                                                                                                                    card.className = "answer-card";
 
-                                                                            const card = document.createElement("div");
+                                                                                                                                                                                                                                                            card.textContent = answer;
 
-                                                                            card.className="answer-card";
+                                                                                                                                                                                                                                                                    if (userAnswers[currentQuestion] === index) {
+                                                                                                                                                                                                                                                                                card.classList.add("selected");
+                                                                                                                                                                                                                                                                                        }
 
-                                                                            card.textContent=answer;
+                                                                                                                                                                                                                                                                                                card.onclick = function () {
 
-                                                                            if(selectedAnswers[currentQuestion]===index){
+                                                                                                                                                                                                                                                                                                            document.querySelectorAll(".answer-card").forEach(card => {
 
-                                                                            card.classList.add("selected");
+                                                                                                                                                                                                                                                                                                                            card.classList.remove("selected");
 
-                                                                            }
+                                                                                                                                                                                                                                                                                                                                        });
 
-                                                                            card.addEventListener("click",()=>{
+                                                                                                                                                                                                                                                                                                                                                    this.classList.add("selected");
 
-                                                                            document.querySelectorAll(".answer-card").forEach(c=>{
+                                                                                                                                                                                                                                                                                                                                                                userAnswers[currentQuestion] = index;
 
-                                                                            c.classList.remove("selected");
+                                                                                                                                                                                                                                                                                                                                                                        };
 
-                                                                            });
+                                                                                                                                                                                                                                                                                                                                                                                answersElement.appendChild(card);
 
-                                                                            card.classList.add("selected");
+                                                                                                                                                                                                                                                                                                                                                                                    });
 
-                                                                            selectedAnswers[currentQuestion]=index;
+                                                                                                                                                                                                                                                                                                                                                                                        previousButton.style.visibility =
+                                                                                                                                                                                                                                                                                                                                                                                                currentQuestion === 0 ? "hidden" : "visible";
 
-                                                                            });
+                                                                                                                                                                                                                                                                                                                                                                                                    nextButton.textContent =
+                                                                                                                                                                                                                                                                                                                                                                                                            currentQuestion === questions.length - 1
+                                                                                                                                                                                                                                                                                                                                                                                                                        ? "Submit"
+                                                                                                                                                                                                                                                                                                                                                                                                                                    : "Next";
 
-                                                                            answers.appendChild(card);
+                                                                                                                                                                                                                                                                                                                                                                                                                                    }
 
-                                                                            });
+                                                                                                                                                                                                                                                                                                                                                                                                                                    // ===========================
+                                                                                                                                                                                                                                                                                                                                                                                                                                    // Next Question
+                                                                                                                                                                                                                                                                                                                                                                                                                                    // ===========================
 
-                                                                            prevBtn.style.visibility =
-                                                                            currentQuestion===0 ? "hidden":"visible";
+                                                                                                                                                                                                                                                                                                                                                                                                                                    function nextQuestion() {
 
-                                                                            nextBtn.textContent =
-                                                                            currentQuestion===questions.length-1
-                                                                            ? "Submit"
-                                                                            : "Next";
+                                                                                                                                                                                                                                                                                                                                                                                                                                        if (userAnswers[currentQuestion] === undefined) {
 
-                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                alert("Please select an answer before continuing.");
 
-                                                                            // ==========================
+                                                                                                                                                                                                                                                                                                                                                                                                                                                        return;
 
-                                                                            function nextQuestion(){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
 
-                                                                            if(selectedAnswers[currentQuestion]===undefined){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                if (currentQuestion < questions.length - 1) {
 
-                                                                            alert("Please select an answer before continuing.");
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        currentQuestion++;
 
-                                                                            return;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                loadQuestion();
 
-                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    } else {
 
-                                                                            if(currentQuestion<questions.length-1){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            showThankYou();
 
-                                                                            currentQuestion++;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
 
-                                                                            loadQuestion();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
 
-                                                                            }else{
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                // ===========================
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                // Previous Question
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                // ===========================
 
-                                                                            showThankYou();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                function previousQuestion() {
 
-                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    if (currentQuestion > 0) {
 
-                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            currentQuestion--;
 
-                                                                            // ==========================
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    loadQuestion();
 
-                                                                            function previousQuestion(){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
 
-                                                                            if(currentQuestion>0){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
 
-                                                                            currentQuestion--;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        // ===========================
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        // Thank You Screen
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        // ===========================
 
-                                                                            loadQuestion();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        function showThankYou() {
 
-                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            const surveyCard = document.querySelector(".survey-card");
 
-                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                surveyCard.innerHTML = `
 
-                                                                            // ==========================
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="thank-you">
 
-                                                                            function showThankYou(){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <h1>✔ Thank You!</h1>
 
-                                                                            const card=document.querySelector(".survey-card");
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <p>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Your response has been submitted successfully.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <br><br>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                We appreciate your participation.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </p>
 
-                                                                            card.innerHTML=`
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
 
-                                                                            <div class="thank-you">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        `;
 
-                                                                            <h1>✔ Thank You!</h1>
-
-                                                                            <p>
-
-                                                                            Your response has been submitted successfully.
-
-                                                                            <br><br>
-
-                                                                            We appreciate your participation.
-
-                                                                            </p>
-
-                                                                            </div>
-
-                                                                            `;
-
-                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
