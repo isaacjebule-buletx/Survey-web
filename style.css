@@ -1,148 +1,131 @@
+/* RESET */
+
 *{
     margin:0;
-    padding:0;
-    box-sizing:border-box;
-    }
+        padding:0;
+            box-sizing:border-box;
+            }
 
-    body{
+            body{
+                font-family:'Poppins',sans-serif;
+                }
 
-    font-family:Arial,Helvetica,sans-serif;
+                /* LANDING PAGE */
 
-    background:url("background1.jpg");
+                body.landing{
+                    height:100vh;
+                        background:url("images/background1.jpg") center center/cover no-repeat;
+                            display:flex;
+                                justify-content:center;
+                                    align-items:center;
+                                        overflow:hidden;
+                                            position:relative;
+                                                animation:zoomBackground 20s ease-in-out infinite alternate;
+                                                }
 
-    background-size:cover;
+                                                /* DARK OVERLAY */
 
-    background-position:center;
+                                                .overlay{
+                                                    position:absolute;
+                                                        inset:0;
+                                                            background:rgba(0,0,0,0.55);
+                                                            }
 
-    height:100vh;
+                                                            /* GLASS CARD */
 
-    overflow:hidden;
+                                                            .welcome-card{
+                                                                position:relative;
+                                                                    z-index:2;
 
-    animation:zoomBackground 20s infinite alternate;
+                                                                        width:90%;
+                                                                            max-width:520px;
 
-    }
+                                                                                padding:50px 40px;
 
-    .overlay{
+                                                                                    text-align:center;
 
-    width:100%;
+                                                                                        background:rgba(255,255,255,.12);
+                                                                                            backdrop-filter:blur(15px);
+                                                                                                -webkit-backdrop-filter:blur(15px);
 
-    height:100vh;
+                                                                                                    border:1px solid rgba(255,255,255,.18);
 
-    background:rgba(0,0,0,.55);
+                                                                                                        border-radius:25px;
 
-    display:flex;
+                                                                                                            box-shadow:0 8px 32px rgba(0,0,0,.35);
 
-    justify-content:center;
+                                                                                                                animation:fadeUp 1.2s ease;
+                                                                                                                }
 
-    align-items:center;
+                                                                                                                /* TITLE */
 
-    }
+                                                                                                                .welcome-card h1{
 
-    .hero{
+                                                                                                                    color:white;
 
-    width:90%;
+                                                                                                                        font-size:3rem;
 
-    max-width:700px;
+                                                                                                                            margin-bottom:20px;
 
-    padding:45px;
+                                                                                                                                font-weight:700;
+                                                                                                                                }
 
-    background:rgba(255,255,255,.15);
+                                                                                                                                /* DESCRIPTION */
 
-    backdrop-filter:blur(15px);
+                                                                                                                                .welcome-card p{
 
-    border-radius:25px;
+                                                                                                                                    color:#ececec;
 
-    text-align:center;
+                                                                                                                                        line-height:1.8;
 
-    color:white;
+                                                                                                                                            font-size:1.05rem;
 
-    box-shadow:0 10px 40px rgba(0,0,0,.4);
+                                                                                                                                                margin-bottom:35px;
+                                                                                                                                                }
 
-    animation:fadeUp 1.5s;
+                                                                                                                                                /* BUTTON */
 
-    }
+                                                                                                                                                .start-btn{
 
-    .hero h1{
+                                                                                                                                                    display:inline-block;
 
-    font-size:3rem;
+                                                                                                                                                        padding:15px 38px;
 
-    margin-bottom:20px;
+                                                                                                                                                            border-radius:50px;
 
-    }
+                                                                                                                                                                text-decoration:none;
 
-    .hero p{
+                                                                                                                                                                    color:white;
 
-    font-size:1.2rem;
+                                                                                                                                                                        background:#2563eb;
 
-    line-height:1.8;
+                                                                                                                                                                            font-weight:600;
 
-    margin-bottom:35px;
+                                                                                                                                                                                transition:.35s;
+                                                                                                                                                                                }
 
-    }
+                                                                                                                                                                                .start-btn:hover{
 
-    button{
+                                                                                                                                                                                    background:#1d4ed8;
 
-    background:#2563eb;
+                                                                                                                                                                                        transform:translateY(-4px);
 
-    color:white;
+                                                                                                                                                                                            box-shadow:0 12px 25px rgba(37,99,235,.4);
+                                                                                                                                                                                            }
 
-    padding:18px 40px;
+                                                                                                                                                                                            .start-btn:active{
 
-    border:none;
+                                                                                                                                                                                                transform:scale(.96);
+                                                                                                                                                                                                }
 
-    border-radius:50px;
+                                                                                                                                                                                                /* ANIMATIONS */
 
-    font-size:18px;
+                                                                                                                                                                                                @keyframes fadeUp{
 
-    cursor:pointer;
+                                                                                                                                                                                                    from{
+                                                                                                                                                                                                            opacity:0;
+                                                                                                                                                                                                                    transform:translateY(40px);
+                                                                                                                                                                                                                        }
 
-    transition:.4s;
-
-    }
-
-    button:hover{
-
-    transform:translateY(-6px) scale(1.05);
-
-    background:#1d4ed8;
-
-    box-shadow:0 10px 25px rgba(37,99,235,.5);
-
-    }
-
-    @keyframes fadeUp{
-
-    from{
-
-    opacity:0;
-
-    transform:translateY(80px);
-
-    }
-
-    to{
-
-    opacity:1;
-
-    transform:translateY(0);
-
-    }
-
-    }
-
-    @keyframes zoomBackground{
-
-    from{
-
-    transform:scale(1);
-
-    }
-
-    to{
-
-    transform:scale(1.1);
-
-    }
-
-    }
-}
+                                                                                                                                                                                                                            to{
+                                                                                                                                                                                                                                    opacity:1;
