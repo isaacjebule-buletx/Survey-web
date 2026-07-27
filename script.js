@@ -1,5 +1,148 @@
-const startButton = document.querySelector("button");
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    }
 
-startButton.addEventListener("click", function () {
-    window.location.href = "survey.html";
-});
+    body{
+
+    font-family:Arial,Helvetica,sans-serif;
+
+    background:url("background1.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    height:100vh;
+
+    overflow:hidden;
+
+    animation:zoomBackground 20s infinite alternate;
+
+    }
+
+    .overlay{
+
+    width:100%;
+
+    height:100vh;
+
+    background:rgba(0,0,0,.55);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    }
+
+    .hero{
+
+    width:90%;
+
+    max-width:700px;
+
+    padding:45px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(15px);
+
+    border-radius:25px;
+
+    text-align:center;
+
+    color:white;
+
+    box-shadow:0 10px 40px rgba(0,0,0,.4);
+
+    animation:fadeUp 1.5s;
+
+    }
+
+    .hero h1{
+
+    font-size:3rem;
+
+    margin-bottom:20px;
+
+    }
+
+    .hero p{
+
+    font-size:1.2rem;
+
+    line-height:1.8;
+
+    margin-bottom:35px;
+
+    }
+
+    button{
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:18px 40px;
+
+    border:none;
+
+    border-radius:50px;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:.4s;
+
+    }
+
+    button:hover{
+
+    transform:translateY(-6px) scale(1.05);
+
+    background:#1d4ed8;
+
+    box-shadow:0 10px 25px rgba(37,99,235,.5);
+
+    }
+
+    @keyframes fadeUp{
+
+    from{
+
+    opacity:0;
+
+    transform:translateY(80px);
+
+    }
+
+    to{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+    }
+
+    }
+
+    @keyframes zoomBackground{
+
+    from{
+
+    transform:scale(1);
+
+    }
+
+    to{
+
+    transform:scale(1.1);
+
+    }
+
+    }
+}
